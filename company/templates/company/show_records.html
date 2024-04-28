@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+      <h3>Welcome {{request.user}}</h3>
+      <h1>Listed Companies</h1>
+
+      <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">City</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">ID</th>
+          </tr>
+        </thead>
+        <tbody>   
+          {% if records %}
+            {% for record in records %}
+              <tr>
+                <td>{{ record.name }}</td>
+                <td>{{ record.city }}</td>
+                <td>{{ record.email }}</td>
+
+                <td><a href="{% url 'crecord' record.id %}">{{ record.id }}</a></td>
+              </tr>
+            {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+
+      <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
+    
+    {% else %}
+
+    <div class="col-md-6 offset-md-3">
+      <h1>Login</h1>
+      <br/>
+      <form method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+          <input type="text" class="form-control" name="username", placeholder="User ID" required>
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" name="password", placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-secondary">Login</button>
+      </form>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <h3>Welcome {{request.user}}</h3>
+
+    <div class="row">
+      <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Manage Employees</h5>
+            <p class="card-text">Add/Update User</p>
+            <a href="" class="card-link">View</a>
+            <a href="{% url 'register' %}" class="card-link">Add Employee</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Activity Type</h5>
+            <p class="card-text">Manage Activity Types</p>
+            <a href="{% url 'record_list' 1 %}" class="card-link">View</a>
+            <a href="{% url 'add_record' 1 %}" class="card-link">Add</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Priority</h5>
+            <p class="card-text">Manage Priority Levels</p>
+            <a href="{% url 'record_list' 2 %}" class="card-link">View</a>
+            <a href="{% url 'add_record' 2 %}" class="card-link">Add More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Stage</h5>
+            <p class="card-text">Manage Stages</p>
+            <a href="{% url 'record_list' 3 %}" class="card-link">View</a>
+            <a href="{% url 'add_record' 3 %}" class="card-link">Add More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Status</h5>
+            <p class="card-text">Manage Status</p>
+            <a href="{% url 'record_list' 4 %}" class="card-link">View</a>
+            <a href="{% url 'add_record' 4 %}" class="card-link">Add More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Company</h5>
+            <p class="card-text">Manage Companies</p>
+            <a href="{% url 'crecord_list' %}" class="card-link">View</a>
+            <a href="{% url 'cadd_record' %}" class="card-link">Add More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Business Contacts</h5>
+            <p class="card-text">Manage Business Contacts</p>
+            <a href="{% url 'bcrecord_list' %}" class="card-link">View</a>
+            <a href="{% url 'bcadd_record' %}" class="card-link">Add More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Leads</h5>
+            <p class="card-text">Manage Business Leads</p>
+            <a href="{% url 'leads_list' %}" class="card-link">View</a>
+            <a href="{% url 'add_lead' %}" class="card-link">Add More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Opportunities</h5>
+            <p class="card-text">Manage Opportunities</p>
+            <a href="{% url 'opportunity_list' %}" class="card-link">View</a>
+            <a href="{% url 'add_opportunity' %}" class="card-link">Add More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Task</h5>
+            <p class="card-text">Manage Tasks</p>
+            <a href="{% url 'task_list' %}" class="card-link">View</a>
+            <a href="{% url 'add_task' %}" class="card-link">Add More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Note</h5>
+            <p class="card-text">Add note to activity</p>
+            <a href="{% url 'note_list' %}" class="card-link">View</a>
+            <a href="{% url 'add_note' %}" class="card-link">Add More</a>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Facility Management</h5>
+            <p class="card-text">Available Facilities: {{Count}}</p>
+            <a href="" class="card-link">View</a>
+            <a href="" class="card-link">Add More</a>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    
+    {% else %}
+
+    <div class="col-md-6 offset-md-3">
+      <h1>Login</h1>
+      <br/>
+      <form method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+          <input type="text" class="form-control" name="username", placeholder="User ID" required>
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" name="password", placeholder="Password" required>
+        </div>
+        <!-- <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> -->
+        <button type="submit" class="btn btn-secondary">Login</button>
+      </form>
+    </div>
+{% endif %}
+{% endblock %}
