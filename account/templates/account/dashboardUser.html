@@ -5,7 +5,7 @@
     <h3>Welcome {{request.user}}</h3>
 
     <div class="row">
-      <div class="col-sm-3", style="padding: 2px;">
+      {% comment %} <div class="col-sm-3", style="padding: 2px;">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Manage Employees</h5>
@@ -74,7 +74,7 @@
             <a href="{% url 'bcadd_record' %}" class="card-link">Add More</a>
           </div>
         </div>
-      </div>
+      </div> {% endcomment %}
       <div class="col-sm-3", style="padding: 2px;">
         <div class="card">
           <div class="card-body">
@@ -115,16 +115,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="col-sm-3", style="padding: 2px;">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Facility Management</h5>
-            <p class="card-text">Available Facilities: {{Count}}</p>
-            <a href="" class="card-link">View</a>
-            <a href="" class="card-link">Add More</a>
-          </div>
-        </div>
-      </div> -->
     </div>
     
     {% else %}

@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import CompanyForm
 from .models import Company
 
+# @login_required(login_url='/login')
 def list_records(request):
     if request.user.is_authenticated:
         records = Company.objects.all()
@@ -13,6 +14,7 @@ def list_records(request):
         messages.success(request, "Login Required!")
         return redirect('home')
 
+# @login_required(login_url='/login')
 def view_record(request, pk):
 	if request.user.is_authenticated:
 		# Look Up Records
@@ -22,6 +24,7 @@ def view_record(request, pk):
 		messages.success(request, "Login Required!")
 		return redirect('home')
 
+# @login_required(login_url='/login')
 def delete_record(request, pk):
 	if request.user.is_authenticated:
 		delete_it = Company.objects.get(id=pk)
@@ -32,6 +35,7 @@ def delete_record(request, pk):
 		messages.success(request, "Login required!")
 		return redirect('home')
 
+# @login_required(login_url='/login')
 def add_record(request):
     form = CompanyForm(request.POST or None)
     if request.user.is_authenticated:
@@ -59,6 +63,7 @@ def add_record(request):
         messages.success(request, "Login required!")
         return redirect('home')
 
+# @login_required(login_url='/login')
 def update_record(request, pk):
 	if request.user.is_authenticated:
 		current_record = Company.objects.get(id=pk)
