@@ -13,24 +13,18 @@ def home(request):
     if request.method == 'POST':
         var_username = request.POST['username']
         var_password = request.POST['password']
-        print(var_username)
         # Authenticate
         user = authenticate(request, username=var_username, password=var_password)
         if user is not None:
-            print("NotNone")
             login(request, user)
             if request.user.is_superuser :
-                print("Sup")
                 return render(request,'account/dashboardAdmin.html', {'User': user, 'Count': count})
             else:
-                print("NoSup")
                 return render(request,'account/dashboardUser.html', {'User': user, 'Count': count})
         else:
-            print("Home")
             messages.success(request, "Error!, please try again.")
             return redirect('home')
     else:
-        print("Last")
         return render(request, 'account/home.html', {'User': "Guest", 'Count': count})
 
 def login_user(request):
