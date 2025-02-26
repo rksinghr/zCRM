@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice #{{ invoice.id }}</title>
+    <style>
+        .invoice-header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .invoice-details {
+            margin-top: 20px;
+        }
+        .invoice-items th, .invoice-items td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-header">
+        <h2>Invoice #{{ invoice.id }}</h2>
+        <p>{{ invoice.client.name }}</p>
+        <p>Issued Date: {{ invoice.issued_date }}</p>
+        <p>Due Date: {{ invoice.due_date }}</p>
+    </div>
+    <div class="invoice-details">
+        <table class="invoice-items">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in invoice.items.all %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>${{ item.price_per_item }}</td>
+                        <td>${{ item.total_price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h3>Total Amount: ${{ invoice.total_amount }}</h3>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Invoice</title>
+</head>
+<body>
+    <h1>Create a New Invoice</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        <h2>Invoice Details</h2>
+        {{ invoice_form.as_p }}
+        
+        <h2>Invoice Item Details</h2>
+        {{ item_form.as_p }}
+        
+        <button type="submit">Create Invoice</button>
+    </form>
+
+    <br>
+    <a href="{% url 'invoice_list' %}">Back to Invoice List</a>
+</body>
+</html>

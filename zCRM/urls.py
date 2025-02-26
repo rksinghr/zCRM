@@ -26,4 +26,5 @@ urlpatterns = [
     path('', include('opportunity.urls')),
     path('', include('task.urls')),
     path('', include('note.urls')),
+    path('invoices/', include('invoices.urls')),
 ]

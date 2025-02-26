@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'note',
     'opportunity',
     'task',
+    'invoices',
 ]
 
 MIDDLEWARE = [
