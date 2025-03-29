@@ -8,7 +8,38 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="">Dashboard</a>
+            <a class="nav-link" href="{% url 'home' %}">Dashboard</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Admin
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'register' %}">Add Employee</a></li>
+              <li><a class="dropdown-item" href="{% url 'add_record' 1 %}">Add Activity</a></li>
+              <li><a class="dropdown-item" href="{% url 'add_record' 2 %}">Add Priority</a></li>
+              <li><a class="dropdown-item" href="{% url 'add_record' 3 %}">Add Stages</a></li>
+              <li><a class="dropdown-item" href="{% url 'add_record' 4 %}">Add Status</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Client
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'cadd_record' %}">Add Companey</a></li>
+              <li><a class="dropdown-item" href="{% url 'bcadd_record' %}">Biz Contact</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sales
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="{% url 'add_lead' %}">New Lead</a></li>
+              <li><a class="dropdown-item" href="{% url 'add_opportunity' %}">New Opportunity</a></li>
+              <li><a class="dropdown-item" href="{% url 'create_project' %}">New Invoice</a></li>
+            </ul>
           </li>
 
           <li class="nav-item">

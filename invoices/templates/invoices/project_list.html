@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects</title>
+</head>
+<body>
+    <h1>Projects</h1>
+    <a href="{% url 'create_project' %}">Create New</a>
+    <ul>
+        {% for project in projects %}
+            <li>
+                Invoice #{{ project.id }} - {{ project.projectName }} - {{ project.client.name }}  
+                <a href="{% url 'create_BOQ' project.id %}">Create BOQ</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

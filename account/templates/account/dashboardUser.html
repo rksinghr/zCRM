@@ -115,6 +115,16 @@
           </div>
         </div>
       </div>
+      <div class="col-sm-3", style="padding: 2px;">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Invoice Management</h5>
+            <p class="card-text">Total Invoices: {{Count}}</p>
+            <a href="{% url 'project_list' %}" class="card-link">View</a>
+            <a href="{% url 'create_project' %}" class="card-link">Create</a>
+          </div>
+        </div>
+      </div>
     </div>
     
     {% else %}
